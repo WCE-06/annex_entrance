@@ -244,7 +244,6 @@
       <div class="status">
         <div class="icon-area">
           <div id="spinner" class="spinner" aria-hidden="true"></div>
-
           <div id="successMark" class="success-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M5 12.5l4.2 4.2L19 7.5"></path>
@@ -289,7 +288,6 @@
 
     const codeInput = document.getElementById('codeInput');
     const submitBtn = document.getElementById('submitBtn');
-
     const messageMain = document.getElementById('messageMain');
     const messageSub = document.getElementById('messageSub');
     const progressShell = document.getElementById('progressShell');
@@ -334,7 +332,7 @@
       spinner.style.display = 'none';
       successMark.style.display = 'none';
 
-      messageMain.textContent = '通行許可証・住民登録証を\nスキャンしてください。';
+      messageMain.textContent = '通行許可証・住民登録証を\\nスキャンしてください。';
       messageSub.textContent = '';
       messageSub.classList.remove('error-note');
     }
@@ -420,27 +418,27 @@
 
     function mapErrorMessage(reason) {
       if (reason === 'empty_customer_code') {
-        return '会員番号を確認できませんでした。\nもう一度お試しください。';
+        return '会員番号を確認できませんでした。\\nもう一度お試しください。';
       }
       if (reason === 'customer_not_found') {
-        return '会員情報を確認できませんでした。\n公式LINEの会員登録をご確認ください。';
+        return '会員情報を確認できませんでした。\\n公式LINEの会員登録をご確認ください。';
       }
       if (reason === 'rank_not_allowed') {
-        return 'この会員証では別館への入場ができません。\n会員情報をご確認ください。';
+        return 'この会員証では別館への入場ができません。\\n会員情報をご確認ください。';
       }
       if (reason === 'outside_area') {
-        return '別館入口付近にいることを確認できませんでした。\n入口の近くで、もう一度お試しください。';
+        return '別館入口付近にいることを確認できませんでした。\\n入口の近くで、もう一度お試しください。';
       }
       if (reason === 'outside_open_hours') {
-        return '現在、別館入場システムの利用時間外です。\nご利用可能時間は8:00〜翌2:00です。';
+        return '現在、別館入場システムの利用時間外です。\\nご利用可能時間は8:00〜翌2:00です。';
       }
       if (reason === 'door_failed') {
-        return '会員確認は完了しましたが、\nスマートロックの解錠に失敗しました。';
+        return '会員確認は完了しましたが、\\nスマートロックの解錠に失敗しました。';
       }
       if (reason === 'Failed to fetch') {
-        return '通信に失敗しました。\n少し時間をあけてもう一度お試しください。';
+        return '通信に失敗しました。\\n少し時間をあけてもう一度お試しください。';
       }
-      return 'うまく確認できませんでした。\nもう一度お試しください。';
+      return 'うまく確認できませんでした。\\nもう一度お試しください。';
     }
 
     function getCurrentPositionOnce() {
@@ -496,8 +494,8 @@
       spinner.style.display = 'none';
       successMark.style.display = 'flex';
 
-      messageMain.textContent = 'スマートロックを解錠しました。\nドアノブを回してお入りください。';
-      messageSub.textContent = '入室後は、ドアが閉まったことをご確認ください。';
+      messageMain.textContent = 'スマートロックを解錠します。\\n扉を引いてお入りください。';
+      messageSub.textContent = '入室後は、扉が閉まったことをご確認ください。';
       messageSub.classList.remove('error-note');
 
       playSuccessSound();
@@ -518,7 +516,7 @@
       successMark.style.display = 'none';
 
       messageMain.textContent = data && data.message ? data.message : mapErrorMessage(reason);
-      messageSub.textContent = '再試行しても解錠できない場合、\n公式LINEのリッチメニューから、\nヘルプチャットにてお問い合わせください。';
+      messageSub.textContent = '再試行しても解錠できない場合、\\n公式LINEのリッチメニューから、\\nヘルプチャットにてお問い合わせください。';
       messageSub.classList.add('error-note');
 
       playErrorSound();
@@ -537,7 +535,7 @@
 
       if (isDuplicateRecently(customerCode)) {
         resetVisualState();
-        messageMain.textContent = '確認が重なっているため、\n少し待ってからもう一度お試しください。';
+        messageMain.textContent = '確認が重なっているため、\\n少し待ってからもう一度お試しください。';
         messageSub.textContent = '';
         messageSub.classList.add('error-note');
         playErrorSound();
@@ -552,8 +550,8 @@
 
       resetVisualState();
 
-      messageMain.textContent = '通行許可証・住民登録証を確認しています。\n現在地を確認しています。';
-      messageSub.textContent = '確認が完了しましたら、\n入口のスマートロックが解錠されます。';
+      messageMain.textContent = '通行許可証・住民登録証を確認しています。\\n現在地を確認しています。';
+      messageSub.textContent = '確認が完了しましたら、\\n入口のスマートロックが解錠されます。';
 
       const stopProgress = startProgressAnimation();
 
@@ -562,34 +560,22 @@
         location = await getCurrentPositionOnce();
       } catch (err) {
         showError('outside_area', {
-          message: '現在地を確認できませんでした。\n位置情報の利用を許可してから、もう一度お試しください。'
+          message: '現在地を確認できませんでした。\\n位置情報の利用を許可してから、もう一度お試しください。'
         });
         return;
       }
 
-      const firstResult = await postAnnexEntry(customerCode, location);
+      const result = await postAnnexEntry(customerCode, location);
 
-      if (firstResult && firstResult.ok) {
+      if (result && result.ok) {
         stopProgress(true);
         progressStopper = null;
         await sleep(250);
-        showSuccess(firstResult);
+        showSuccess(result);
         return;
       }
 
-      progressShell.style.display = 'none';
-      spinner.style.display = 'block';
-
-      await sleep(1000);
-
-      const secondResult = await postAnnexEntry(customerCode, location);
-
-      if (secondResult && secondResult.ok) {
-        showSuccess(secondResult);
-        return;
-      }
-
-      showError(secondResult && (secondResult.reason || secondResult.error), secondResult);
+      showError(result && (result.reason || result.error), result);
     }
 
     submitBtn.addEventListener('click', () => {
