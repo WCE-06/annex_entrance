@@ -33,7 +33,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 14px;
     }
 
     .wrap {
@@ -41,42 +41,42 @@
       max-width: 760px;
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 30px;
+      border-radius: 28px;
       box-shadow: var(--shadow);
-      padding: 30px 24px 26px;
+      padding: 22px 20px 20px;
       backdrop-filter: blur(12px);
     }
 
     .header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .title {
       margin: 0;
-      font-size: clamp(32px, 6vw, 52px);
-      line-height: 1.25;
+      font-size: clamp(28px, 6vw, 48px);
+      line-height: 1.2;
       letter-spacing: 0.04em;
       color: #6e533c;
       font-weight: 800;
     }
 
     .sub {
-      margin: 14px 0 0;
+      margin: 10px 0 0;
       color: var(--muted);
       font-size: 15px;
-      line-height: 1.8;
+      line-height: 1.6;
     }
 
     .card {
       background: rgba(255,255,255,0.58);
       border: 1px solid rgba(185, 147, 105, 0.16);
       border-radius: 24px;
-      padding: 26px 20px;
+      padding: 20px 18px;
     }
 
     .status {
-      min-height: 320px;
+      min-height: 200px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -84,17 +84,17 @@
     }
 
     .icon-area {
-      height: 70px;
+      height: 54px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
 
     .progress-shell {
       width: 100%;
       max-width: 420px;
-      margin: 18px auto 0;
+      margin: 12px auto 0;
     }
 
     .progress-track {
@@ -115,17 +115,17 @@
     }
 
     .progress-num {
-      margin-top: 12px;
+      margin-top: 10px;
       text-align: center;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       color: #8a6746;
       letter-spacing: 0.04em;
     }
 
     .spinner {
-      width: 54px;
-      height: 54px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       border: 5px solid rgba(185, 147, 105, 0.22);
       border-top-color: var(--accent-deep);
@@ -134,8 +134,8 @@
     }
 
     .success-mark {
-      width: 72px;
-      height: 72px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       display: none;
       align-items: center;
@@ -145,8 +145,8 @@
     }
 
     .success-mark svg {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       stroke: var(--ok-deep);
       stroke-width: 3.2;
       fill: none;
@@ -157,23 +157,23 @@
     .message-main {
       margin: 0;
       text-align: center;
-      font-size: clamp(24px, 5vw, 34px);
-      line-height: 1.7;
+      font-size: clamp(22px, 5vw, 30px);
+      line-height: 1.55;
       font-weight: 800;
       color: #6c5037;
     }
 
     .message-sub {
-      margin: 14px 0 0;
+      margin: 10px 0 0;
       text-align: center;
       font-size: 16px;
-      line-height: 1.9;
+      line-height: 1.7;
       color: var(--muted);
-      min-height: 1.8em;
+      min-height: 1.6em;
     }
 
     .input-area {
-      margin-top: 26px;
+      margin-top: 20px;
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
@@ -182,24 +182,28 @@
     .code-input {
       flex: 1;
       min-width: 240px;
-      height: 58px;
+      height: 72px;
       border-radius: 18px;
       border: 1px solid rgba(185, 147, 105, 0.22);
       background: rgba(255,255,255,0.72);
       color: var(--text);
-      font-size: 20px;
-      padding: 0 18px;
+      font-size: 22px;
+      padding: 0 22px;
       outline: none;
     }
 
+    .code-input::placeholder {
+      font-size: 16px;
+    }
+
     .btn {
-      height: 58px;
+      height: 72px;
       border: none;
       border-radius: 18px;
       padding: 0 28px;
       background: linear-gradient(180deg, #e4ceb0 0%, #d5b490 100%);
       color: #65492f;
-      font-size: 17px;
+      font-size: 20px;
       font-weight: 800;
       cursor: pointer;
       box-shadow: 0 8px 20px rgba(185, 147, 105, 0.18);
@@ -212,11 +216,11 @@
     }
 
     .footer {
-      margin-top: 18px;
+      margin-top: 14px;
       text-align: center;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.8;
+      line-height: 1.6;
     }
 
     .error-note { color: var(--error); }
@@ -226,23 +230,60 @@
     }
 
     @media (max-width: 640px) {
+      body {
+        padding: 10px;
+        align-items: flex-start;
+      }
+
       .wrap {
-        padding: 22px 16px 18px;
-        border-radius: 24px;
+        padding: 18px 14px 16px;
+        border-radius: 22px;
+      }
+
+      .header {
+        margin-bottom: 10px;
+      }
+
+      .title {
+        font-size: 30px;
+        line-height: 1.15;
+      }
+
+      .sub {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .card {
+        padding: 16px 14px;
+      }
+
+      .status {
+        min-height: 185px;
+      }
+
+      .icon-area {
+        height: 40px;
+        margin-bottom: 6px;
       }
 
       .message-main {
-        font-size: 18px;
-        line-height: 1.9;
+        font-size: 16px;
+        line-height: 1.7;
       }
 
       .message-sub {
-        font-size: 14px;
-        line-height: 1.9;
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .progress-num {
+        font-size: 22px;
       }
 
       .input-area {
         flex-direction: column;
+        margin-top: 16px;
       }
 
       .btn, .code-input {
@@ -250,7 +291,13 @@
       }
 
       .code-input {
-        font-size: 18px;
+        height: 72px;
+        font-size: 22px;
+      }
+
+      .btn {
+        height: 68px;
+        font-size: 20px;
       }
     }
   </style>
@@ -260,7 +307,7 @@
   <main class="wrap">
     <header class="header">
       <h1 class="title">COMPASSION WORLD<br>別館</h1>
-      <p class="sub">通行許可証・住民登録証をスキャンしてください</p>
+      <p class="sub">通行許可証・住民登録証を照会します</p>
     </header>
 
     <section class="card">
@@ -277,7 +324,7 @@
 
         <p id="messageMain" class="message-main">
           通行許可証・住民登録証を<br>
-          スキャンしてください。
+          照会します。
         </p>
 
         <p id="messageSub" class="message-sub"></p>
@@ -299,7 +346,7 @@
           autocomplete="off"
           autocapitalize="characters"
           spellcheck="false"
-          placeholder="ここにコピーした会員番号をペースト"
+          placeholder="ここに会員番号をペースト"
         />
 
         <button id="submitBtn" class="btn" type="button">
@@ -357,7 +404,7 @@
       successMark.style.display = 'none';
 
       messageMain.innerHTML =
-        '通行許可証・住民登録証を<br>スキャンしてください。';
+        '通行許可証・住民登録証を<br>照会します。';
 
       messageSub.textContent = '';
       messageSub.classList.remove('error-note');
