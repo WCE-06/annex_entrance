@@ -18,26 +18,14 @@
       --error: #b06652;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       min-height: 100%;
-      font-family:
-        "Hiragino Sans",
-        "Yu Gothic",
-        "Noto Sans JP",
-        system-ui,
-        sans-serif;
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at top,
-        #fff9f0 0%,
-        var(--bg) 55%,
-        #efe6d6 100%);
+      background: radial-gradient(circle at top, #fff9f0 0%, var(--bg) 55%, #efe6d6 100%);
     }
 
     body {
@@ -122,12 +110,7 @@
       height: 100%;
       width: 0%;
       border-radius: 999px;
-      background:
-        linear-gradient(
-          90deg,
-          #dbc6aa 0%,
-          #c8a57f 100%
-        );
+      background: linear-gradient(90deg, #dbc6aa 0%, #c8a57f 100%);
       transition: width 0.12s linear;
     }
 
@@ -157,12 +140,8 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle at 35% 30%,
-        #eff9e9,
-        #dceccf);
-      box-shadow:
-        inset 0 0 0 1px rgba(111, 147, 96, 0.18);
+      background: radial-gradient(circle at 35% 30%, #eff9e9, #dceccf);
+      box-shadow: inset 0 0 0 1px rgba(111, 147, 96, 0.18);
     }
 
     .success-mark svg {
@@ -218,18 +197,12 @@
       border: none;
       border-radius: 18px;
       padding: 0 28px;
-      background:
-        linear-gradient(
-          180deg,
-          #e4ceb0 0%,
-          #d5b490 100%
-        );
+      background: linear-gradient(180deg, #e4ceb0 0%, #d5b490 100%);
       color: #65492f;
       font-size: 17px;
       font-weight: 800;
       cursor: pointer;
-      box-shadow:
-        0 8px 20px rgba(185, 147, 105, 0.18);
+      box-shadow: 0 8px 20px rgba(185, 147, 105, 0.18);
     }
 
     .btn:disabled {
@@ -246,18 +219,13 @@
       line-height: 1.8;
     }
 
-    .error-note {
-      color: var(--error);
-    }
+    .error-note { color: var(--error); }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
 
     @media (max-width: 640px) {
-
       .wrap {
         padding: 22px 16px 18px;
         border-radius: 24px;
@@ -277,8 +245,7 @@
         flex-direction: column;
       }
 
-      .btn,
-      .code-input {
+      .btn, .code-input {
         width: 100%;
       }
 
@@ -290,79 +257,40 @@
 </head>
 
 <body>
-
   <main class="wrap">
-
     <header class="header">
-      <h1 class="title">
-        COMPASSION WORLD<br>
-        別館
-      </h1>
-
-      <p class="sub">
-        通行許可証・住民登録証をスキャンしてください
-      </p>
+      <h1 class="title">COMPASSION WORLD<br>別館</h1>
+      <p class="sub">通行許可証・住民登録証をスキャンしてください</p>
     </header>
 
     <section class="card">
-
       <div class="status">
-
         <div class="icon-area">
+          <div id="spinner" class="spinner" aria-hidden="true"></div>
 
-          <div
-            id="spinner"
-            class="spinner"
-            aria-hidden="true">
-          </div>
-
-          <div
-            id="successMark"
-            class="success-mark"
-            aria-hidden="true">
-
+          <div id="successMark" class="success-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24">
               <path d="M5 12.5l4.2 4.2L19 7.5"></path>
             </svg>
-
           </div>
         </div>
 
-        <p
-          id="messageMain"
-          class="message-main">
+        <p id="messageMain" class="message-main">
           通行許可証・住民登録証を<br>
           スキャンしてください。
         </p>
 
-        <p
-          id="messageSub"
-          class="message-sub">
-        </p>
+        <p id="messageSub" class="message-sub"></p>
 
-        <div
-          id="progressShell"
-          class="progress-shell">
-
+        <div id="progressShell" class="progress-shell">
           <div class="progress-track">
-            <div
-              id="progressFill"
-              class="progress-fill">
-            </div>
+            <div id="progressFill" class="progress-fill"></div>
           </div>
-
-          <div
-            id="progressNum"
-            class="progress-num">
-            0%
-          </div>
-
+          <div id="progressNum" class="progress-num">0%</div>
         </div>
-
       </div>
 
       <div class="input-area">
-
         <input
           id="codeInput"
           class="code-input"
@@ -371,62 +299,38 @@
           autocomplete="off"
           autocapitalize="characters"
           spellcheck="false"
-          placeholder="会員番号を入力またはスキャン">
+          placeholder="ここにコピーした会員番号をペースト"
+        />
 
-        <button
-          id="submitBtn"
-          class="btn"
-          type="button">
-          入場確認
+        <button id="submitBtn" class="btn" type="button">
+          チェックイン
         </button>
-
       </div>
 
       <div class="footer">
         別館入口付近で操作してください。
       </div>
-
     </section>
-
   </main>
 
   <script>
-
     const ANNEX_GAS_URL =
       'https://script.google.com/macros/s/AKfycby2JDQXvVwEpO_F0WPNwlOYKLwSYIhCACsWA_uf6KjACJL1ulS_t5jhumwbyehAeo6MrA/exec';
 
-    const codeInput =
-      document.getElementById('codeInput');
-
-    const submitBtn =
-      document.getElementById('submitBtn');
-
-    const messageMain =
-      document.getElementById('messageMain');
-
-    const messageSub =
-      document.getElementById('messageSub');
-
-    const progressShell =
-      document.getElementById('progressShell');
-
-    const progressFill =
-      document.getElementById('progressFill');
-
-    const progressNum =
-      document.getElementById('progressNum');
-
-    const spinner =
-      document.getElementById('spinner');
-
-    const successMark =
-      document.getElementById('successMark');
+    const codeInput = document.getElementById('codeInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const messageMain = document.getElementById('messageMain');
+    const messageSub = document.getElementById('messageSub');
+    const progressShell = document.getElementById('progressShell');
+    const progressFill = document.getElementById('progressFill');
+    const progressNum = document.getElementById('progressNum');
+    const spinner = document.getElementById('spinner');
+    const successMark = document.getElementById('successMark');
 
     let isSubmitting = false;
     let progressStopper = null;
 
     function normalizeCustomerCode(value) {
-
       return String(value || '')
         .trim()
         .replace(/\r/g, '')
@@ -440,7 +344,6 @@
     }
 
     function resetVisualState() {
-
       if (progressStopper) {
         progressStopper(false);
         progressStopper = null;
@@ -461,80 +364,56 @@
     }
 
     function playTone(freq, duration, gainValue = 0.035) {
-
       try {
-
-        const ctx =
-          new (window.AudioContext || window.webkitAudioContext)();
-
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
 
         osc.type = 'sine';
         osc.frequency.value = freq;
-
         gain.gain.value = gainValue;
 
         osc.connect(gain);
         gain.connect(ctx.destination);
-
         osc.start();
 
         setTimeout(() => {
           osc.stop();
           ctx.close();
         }, duration);
-
       } catch (e) {}
     }
 
     function playSuccessSound() {
-
       playTone(784, 120);
-
-      setTimeout(() => {
-        playTone(1046, 150);
-      }, 130);
+      setTimeout(() => playTone(1046, 150), 130);
     }
 
     function playErrorSound() {
-
       playTone(280, 170, 0.03);
-
-      setTimeout(() => {
-        playTone(230, 190, 0.03);
-      }, 180);
+      setTimeout(() => playTone(230, 190, 0.03), 180);
     }
 
     function startProgressAnimation() {
-
       let percent = 0;
 
       progressShell.style.display = '';
-
       progressFill.style.width = '0%';
       progressNum.textContent = '0%';
 
       const timer = setInterval(() => {
-
         percent = Math.min(percent + 4, 96);
-
         progressFill.style.width = percent + '%';
         progressNum.textContent = percent + '%';
-
       }, 80);
 
       progressStopper = function stopProgress(complete) {
-
         clearInterval(timer);
 
         if (complete) {
-
           progressFill.style.width = '100%';
           progressNum.textContent = '100%';
-
         } else {
-
           progressFill.style.width = '0%';
           progressNum.textContent = '0%';
         }
@@ -544,19 +423,14 @@
     }
 
     function getCurrentPositionOnce() {
-
       return new Promise((resolve, reject) => {
-
         navigator.geolocation.getCurrentPosition(
-
           pos => resolve({
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
             accuracy: pos.coords.accuracy
           }),
-
           err => reject(err),
-
           {
             enableHighAccuracy: true,
             timeout: 15000,
@@ -567,7 +441,6 @@
     }
 
     async function postAnnexEntry(customerCode, location) {
-
       const res = await fetch(
         ANNEX_GAS_URL,
         {
@@ -589,15 +462,12 @@
     }
 
     function showSuccess() {
-
       if (progressStopper) {
         progressStopper(true);
       }
 
       progressShell.style.display = 'none';
-
       spinner.style.display = 'none';
-
       successMark.style.display = 'flex';
 
       messageMain.innerHTML =
@@ -611,61 +481,48 @@
       playSuccessSound();
 
       setTimeout(() => {
-
         codeInput.value = '';
-
         resetVisualState();
-
         isSubmitting = false;
         submitBtn.disabled = false;
-
       }, 20000);
     }
 
     function showError(message) {
-
       if (progressStopper) {
         progressStopper(false);
       }
 
       spinner.style.display = 'none';
-
       successMark.style.display = 'none';
 
       messageMain.innerHTML =
-        String(message || '')
+        String(message || '登録情報が確認できませんでした。会員番号が正確に入力できているか、ご確認ください。')
           .replace(/\n/g, '<br>');
 
       messageSub.innerHTML =
-        '再試行しても解錠できない場合、<br>公式LINEのリッチメニューから、<br>ヘルプチャットにてお問い合わせください。';
+        '登録情報が確認できませんでした。会員番号が正確に入力できているか、ご確認ください。<br><br>' +
+        '再試行しても解錠できない場合、<br>' +
+        '公式LINEのリッチメニューから、<br>' +
+        'ヘルプチャットにてお問い合わせください。';
 
       messageSub.classList.add('error-note');
 
       playErrorSound();
 
       setTimeout(() => {
-
         codeInput.value = '';
-
         resetVisualState();
-
         isSubmitting = false;
         submitBtn.disabled = false;
-
       }, 10000);
     }
 
     async function submitCode(rawCode) {
-
-      const customerCode =
-        normalizeCustomerCode(rawCode);
+      const customerCode = normalizeCustomerCode(rawCode);
 
       if (!customerCode) {
-
-        showError(
-          '会員番号を確認できませんでした。'
-        );
-
+        showError('登録情報が確認できませんでした。会員番号が正確に入力できているか、ご確認ください。');
         return;
       }
 
@@ -682,51 +539,34 @@
       messageSub.innerHTML =
         '確認が完了しましたら、<br>入口のスマートロックが解錠されます。';
 
-      const stopProgress =
-        startProgressAnimation();
+      const stopProgress = startProgressAnimation();
 
       let location;
 
       try {
-
-        location =
-          await getCurrentPositionOnce();
-
+        location = await getCurrentPositionOnce();
       } catch (err) {
-
-        showError(
-          '現在地を確認できませんでした。<br>位置情報の利用を許可してから、もう一度お試しください。'
-        );
-
+        showError('現在地を確認できませんでした。<br>位置情報の利用を許可してから、もう一度お試しください。');
         return;
       }
 
       try {
-
-        const result =
-          await postAnnexEntry(customerCode, location);
+        const result = await postAnnexEntry(customerCode, location);
 
         if (result && result.ok) {
-
           stopProgress(true);
-
           await sleep(250);
-
           showSuccess();
-
           return;
         }
 
         showError(
           result.message ||
-          'うまく確認できませんでした。'
+          '登録情報が確認できませんでした。会員番号が正確に入力できているか、ご確認ください。'
         );
 
       } catch (err) {
-
-        showError(
-          '通信に失敗しました。<br>少し時間をあけてもう一度お試しください。'
-        );
+        showError('通信に失敗しました。<br>少し時間をあけてもう一度お試しください。');
       }
     }
 
@@ -735,27 +575,20 @@
     });
 
     codeInput.addEventListener('keydown', event => {
-
       if (event.key === 'Enter') {
-
         event.preventDefault();
-
         submitCode(codeInput.value);
       }
     });
 
     codeInput.addEventListener('input', () => {
-
-      codeInput.value =
-        normalizeCustomerCode(codeInput.value);
+      codeInput.value = normalizeCustomerCode(codeInput.value);
     });
 
     window.addEventListener('load', () => {
       resetVisualState();
       codeInput.focus();
     });
-
   </script>
-
 </body>
 </html>
