@@ -624,12 +624,21 @@
     codeInput.addEventListener('keydown', event => {
       if (event.key === 'Enter') {
         event.preventDefault();
-        submitCode(codeInput.value);
+        clearTimeout(window.annexScanInputTimer);
+        window.annexScanInputTimer = setTimeout(() => {
+          submitCode(codeInput.value);
+        }, 400);
       }
     });
 
     codeInput.addEventListener('input', () => {
       codeInput.value = normalizeCustomerCode(codeInput.value);
+      clearTimeout(window.annexScanInputTimer);
+      if (codeInput.value.length >= 3) {
+        window.annexScanInputTimer = setTimeout(() => {
+          submitCode(codeInput.value);
+        }, 1200);
+      }
     });
 
     window.addEventListener('load', () => {
